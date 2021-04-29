@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import Calc from 'screens/calc/Calc';
+import SlopeCalc from 'screens/calc/SlopeCalc';
 
 import {colors} from 'BaseTheme';
 
@@ -20,8 +20,8 @@ export default function CalcStack() {
         },
       }}>
       <StackNavigator.Screen
-        name="Calc"
-        component={Calc}
+        name="SlopeCalc"
+        component={SlopeCalc}
         options={{title: 'Slope Calculator'}}
       />
     </StackNavigator.Navigator>

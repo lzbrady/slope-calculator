@@ -12,6 +12,7 @@
     "reset": "rm -rf node_modules/ && yarn && (cd ios && pod install) && watchman watch-del-all"
   },
   "dependencies": {
+    "@react-native-picker/picker": "^1.15.0",
     "@react-navigation/bottom-tabs": "^5.11.10",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.4",

@@ -8,7 +8,6 @@ export default function TextInput({
   inputStyle,
   keyboardType,
   left,
-  onChangeText,
   right,
   label,
   ref,
@@ -37,22 +36,11 @@ export default function TextInput({
 }
 
 const styles = StyleSheet.create({
-  dollarIconContainer: {
-    zIndex: 10,
-    position: 'absolute',
-    top: 0,
-    left: 2,
-    width: 18,
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   input: {
     backgroundColor: colors.offWhite,
     borderRadius: 4,
-    borderBottomColor: colors.gray,
-    borderBottomWidth: 1,
+    borderColor: colors.gray,
+    borderWidth: 1,
     paddingHorizontal: 8,
     paddingVertical: 8,
     flex: 1,
