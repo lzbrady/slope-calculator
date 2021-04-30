@@ -4,8 +4,8 @@ export const colors = {
   white: '#ffffff',
   offWhite: '#f1f1f1',
   lightGray: '#dadada',
-  gray: '#8a8a8a',
-  darkGray: '#333333',
+  gray: '#666666',
+  darkGray: '#343434',
 
   green: '#169f5e',
   orange: '#ff9901',

@@ -8,28 +8,83 @@ import SlopeLineGraph from 'components/charts/SlopeLineGraph';
 
 import {colors} from 'BaseTheme';
 
+const NO_SLOPE = '-';
+const round = 1000000;
+
 export default function SlopeCalc({navigation}) {
   const [useYIntercept, setUseYIntercept] = useState(false);
   const [x1, setX1] = useState(null);
   const [y1, setY1] = useState(null);
   const [x2, setX2] = useState(null);
   const [y2, setY2] = useState(null);
+
   const [slope, setSlope] = useState(null);
+  const [slopeFraction, setSlopeFraction] = useState(null);
+  const [equation, setEquation] = useState(null);
+  const [angle, setAngle] = useState(null);
+  const [distance, setDistance] = useState(null);
+  const [deltaX, setDeltaX] = useState(null);
+  const [deltaY, setDeltaY] = useState(null);
 
   useEffect(() => {
-    if ((x1 || x1 === 0) && (y1 || y1 === 0) && (x2 || x2 === 0) && (y2 || y2 === 0)) {
-      const deltaY = y2 - y1;
-      const deltaX = x2 - x1;
+    if (
+      ((x1 && !isNaN(x1)) || x1 === 0) &&
+      ((y1 && !isNaN(y1)) || y1 === 0) &&
+      ((x2 && !isNaN(x2)) || x2 === 0) &&
+      ((y2 && !isNaN(y2)) || y2 === 0)
+    ) {
+      const _deltaX = Math.round((x2 - x1) * round) / round;
+      const _deltaY = Math.round((y2 - y1) * round) / round;
 
-      if (Math.round(deltaX) === 0) {
+      setDistance(Math.round(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) * round) / round);
+      setDeltaX(_deltaX);
+      setDeltaY(_deltaY);
+
+      if (_deltaX === 0) {
         setSlope('Undefined');
+        setSlopeFraction(null);
+        setEquation('Vertical Line');
+        setAngle('0.5π rad');
       } else {
-        setSlope(Math.round((deltaY / deltaX) * 10000) / 10000);
+        const _slope = Math.round((_deltaY / _deltaX) * round) / round;
+        const _slopeFraction = reduce(_deltaY, _deltaX);
+        if (_slopeFraction[1] < 0 && _slopeFraction[0] > 0) {
+          _slopeFraction[0] = -1 * _slopeFraction[0];
+          _slopeFraction[1] = -1 * _slopeFraction[1];
+        }
+        const b = Math.round((y1 - _slope * x1) * round) / round;
+
+        setSlope(_slope);
+        setSlopeFraction(_slopeFraction);
+        setEquation(
+          `y=${_slopeFraction[0] === 1 ? '' : _slopeFraction[0]}x${
+            _slopeFraction[1] === 1 ? '' : '/' + _slopeFraction[1]
+          }+${b}`,
+        );
+        setAngle(`${Math.round(Math.abs(Math.atan(_slope)) * round) / round} rad`);
       }
     } else {
-      setSlope('-');
+      setSlope(NO_SLOPE);
+      setSlopeFraction(null);
+      setEquation(null);
+      setAngle(null);
+      setDistance(null);
+      setDeltaX(null);
+      setDeltaY(null);
     }
   }, [x1, y1, x2, y2]);
+
+  useEffect(() => {
+    // Update variables dependent on slope
+  });
+
+  const reduce = (numerator, denominator) => {
+    var gcd = function gcd(a, b) {
+      return b ? gcd(b, a % b) : a;
+    };
+    gcd = gcd(numerator, denominator);
+    return [numerator / gcd, denominator / gcd];
+  };
 
   return (
     <Layout>
@@ -40,11 +95,7 @@ export default function SlopeCalc({navigation}) {
           labelStyle={styles.formulaDropdownLabel}
           onValueChange={value => {
             setUseYIntercept(value);
-
-            if (value) {
-              // If value is true, y-intercept is being used
-              setX2(0);
-            }
+            setX2('0');
           }}
           items={[
             {
@@ -52,7 +103,7 @@ export default function SlopeCalc({navigation}) {
               value: false,
             },
             {
-              label: 'Line',
+              label: 'Slope Intercept',
               value: true,
             },
           ]}
@@ -72,7 +123,6 @@ export default function SlopeCalc({navigation}) {
               </View>
             </View>
           </View>
-
           <View style={styles.pointContainer}>
             <Text style={styles.pointText}>{useYIntercept ? 'Y Intercept' : 'Point 2'}</Text>
             <View style={styles.inputContainer}>
@@ -88,9 +138,48 @@ export default function SlopeCalc({navigation}) {
             </View>
           </View>
 
+          <Text style={styles.disclaimer}>Answers may be rounded within 6 decimals</Text>
+
           <View style={styles.slopeContainer}>
             <Text style={styles.slopeLabel}>Slope</Text>
             <Text style={styles.slopeValue}>{slope}</Text>
+          </View>
+          <View style={styles.slopeInfoContainer}>
+            <View style={styles.slopeInfoColumn}>
+              <View style={styles.slopeInfo}>
+                <Text style={styles.slopeInfoLabel}>Fraction</Text>
+                <Text style={styles.slopeInfoValue}>
+                  {slopeFraction
+                    ? slopeFraction[1] === 1
+                      ? slopeFraction[0]
+                      : `${slopeFraction[0]} / ${slopeFraction[1]}`
+                    : '-'}
+                </Text>
+              </View>
+              <View style={styles.slopeInfo}>
+                <Text style={styles.slopeInfoLabel}>Angle</Text>
+                <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? angle : '-'}</Text>
+              </View>
+              <View style={styles.slopeInfo}>
+                <Text style={styles.slopeInfoLabel}>Delta X</Text>
+                <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? deltaX : '-'}</Text>
+              </View>
+            </View>
+
+            <View style={styles.slopeInfoColumn}>
+              <View style={styles.slopeInfo}>
+                <Text style={styles.slopeInfoLabel}>Equation</Text>
+                <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? equation : '-'}</Text>
+              </View>
+              <View style={styles.slopeInfo}>
+                <Text style={styles.slopeInfoLabel}>Distance</Text>
+                <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? distance : '-'}</Text>
+              </View>
+              <View style={styles.slopeInfo}>
+                <Text style={styles.slopeInfoLabel}>Delta Y</Text>
+                <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? deltaY : '-'}</Text>
+              </View>
+            </View>
           </View>
         </View>
 
@@ -103,6 +192,13 @@ export default function SlopeCalc({navigation}) {
 const styles = StyleSheet.create({
   container: {
     marginBottom: 20,
+  },
+  disclaimer: {
+    marginTop: 10,
+    color: colors.gray,
+    fontSize: 11,
+    fontStyle: 'italic',
+    textAlign: 'center',
   },
   inputContainer: {
     flexDirection: 'row',
@@ -145,6 +241,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 5,
     borderRadius: 4,
+  },
+  slopeInfo: {
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  slopeInfoColumn: {
+    marginHorizontal: 20,
+  },
+  slopeInfoContainer: {
+    alignSelf: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  slopeInfoLabel: {
+    color: colors.gray,
+  },
+  slopeInfoValue: {
+    color: colors.darkGray,
   },
   slopeLabel: {
     fontSize: 20,

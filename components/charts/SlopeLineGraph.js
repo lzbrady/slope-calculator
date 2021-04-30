@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {LineChart, XAxis, YAxis, Grid} from 'react-native-svg-charts';
+import {LineChart, XAxis, YAxis} from 'react-native-svg-charts';
 import {G, Line} from 'react-native-svg';
+import * as scale from 'd3-scale';
 
-import ChartToolTip from 'components/charts/ChartToolTip';
+import {useSettingsContext} from 'context/SettingsContext';
 
 export default function SlopeLineGraph({x1, y1, x2, y2}) {
+  const {dataColor} = useSettingsContext();
+
   const [data, setData] = useState([{x: 0, y: 0}]);
   const [minX, setMinX] = useState(0);
   const [minY, setMinY] = useState(0);
@@ -62,44 +65,33 @@ export default function SlopeLineGraph({x1, y1, x2, y2}) {
   const verticalContentInset = {top: 10, bottom: 10};
   const xAxisHeight = 30;
 
-  const CustomGrid = ({x, y, data: chartData, ticks}) => (
-    <G>
-      {
-        // Horizontal grid
-        ticks.map(tick => (
-          <Line
-            key={tick}
-            x1={'0%'}
-            x2={'100%'}
-            y1={y(tick)}
-            y2={y(tick)}
-            stroke={tick === 0 ? 'rgba(0,0,0,1)' : 'rgba(0,0,0,0.2)'}
-            strokeWidth={tick === 0 ? 2 : 1}
-          />
-        ))
-      }
-      {
-        // Horizontal grid
-        ticks.map((tick, index) => (
-          <Line
-            key={tick}
-            x1={`${index * 10}%`}
-            x2={`${index * 10}%`}
-            y1={'0%'}
-            y2={'100%'}
-            stroke={tick === 0 ? 'rgba(0,0,0,1)' : 'rgba(0,0,0,0.2)'}
-            strokeWidth={tick === 0 ? 2 : 1}
-          />
-        ))
-      }
-    </G>
-  );
+  const CustomGrid = ({x, y, ticks, width}) => {
+    const xTicks = scale.scaleLinear().domain([minX, maxX]).ticks(10);
+
+    return (
+      <G>
+        <Line x1={'0%'} x2={'100%'} y1={y(0)} y2={y(0)} stroke={'rgb(0,0,0)'} strokeWidth={2} />
+        <Line y1={'0%'} y2={'100%'} x1={x(0)} x2={x(0)} stroke={'rgb(0,0,0)'} strokeWidth={2} />
+        {
+          // Horizontal grid
+          ticks.map((tick, i) => (
+            <Line key={i} x1={'0%'} x2={'100%'} y1={y(tick)} y2={y(tick)} stroke={'rgba(0,0,0,0.2)'} strokeWidth={1} />
+          ))
+        }
+        {
+          // Horizontal grid
+          xTicks.map((tick, i) => (
+            <Line key={i} x1={x(tick)} x2={x(tick)} y1={'0%'} y2={'100%'} stroke={'rgba(0,0,0,0.2)'} strokeWidth={1} />
+          ))
+        }
+      </G>
+    );
+  };
 
   return (
     <View style={styles.container}>
-      {data.map((point, index) => {
-        return <Text key={index}>{`(${point.x}, ${point.y})`}</Text>;
-      })}
+      <Text style={styles.chartTitle}>{`Graph of (${x1}, ${y1}) and (${x2}, ${y2})`}</Text>
+
       <View style={styles.chartContainer}>
         <YAxis
           data={data}
@@ -117,7 +109,8 @@ export default function SlopeLineGraph({x1, y1, x2, y2}) {
             xAccessor={({item}) => item.x}
             yAccessor={({item}) => item.y}
             svg={{
-              stroke: 'rgb(134, 65, 244)',
+              stroke: dataColor,
+              strokeWidth: 2,
             }}
             xMin={minX}
             yMin={minY}
@@ -126,8 +119,6 @@ export default function SlopeLineGraph({x1, y1, x2, y2}) {
             contentInset={verticalContentInset}
             numberOfTicks={10}>
             <CustomGrid belowChart={true} />
-            {/* <ChartToolTip xCoord={x1} yCoord={y1} maxX={maxX} minX={minX} maxY={maxY} minY={minY} />
-            <ChartToolTip xCoord={x2} yCoord={y2} maxX={maxX} minX={minX} maxY={maxY} minY={minY} /> */}
           </LineChart>
           <XAxis
             style={{marginHorizontal: -15, marginTop: 3, height: xAxisHeight}}
@@ -137,7 +128,7 @@ export default function SlopeLineGraph({x1, y1, x2, y2}) {
             xAccessor={({item}) => item.x}
             contentInset={{left: 15, right: 15}}
             svg={axesSvg}
-            numberOfTicks={14}
+            numberOfTicks={10}
           />
         </View>
       </View>
@@ -150,6 +141,11 @@ const styles = StyleSheet.create({
     height: 300,
     flexDirection: 'row',
     marginHorizontal: 5,
+  },
+  chartTitle: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginBottom: 5,
   },
   container: {},
 });
