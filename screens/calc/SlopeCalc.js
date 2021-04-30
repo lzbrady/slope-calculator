@@ -59,7 +59,7 @@ export default function SlopeCalc({navigation}) {
         setEquation(
           `y=${_slopeFraction[0] === 1 ? '' : _slopeFraction[0]}x${
             _slopeFraction[1] === 1 ? '' : '/' + _slopeFraction[1]
-          }+${b}`,
+          }${b === 0 ? '' : b < 0 ? b : '+' + b}`,
         );
         setAngle(`${Math.round(Math.abs(Math.atan(_slope)) * round) / round} rad`);
       }
