@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500"
+	xml:space="preserve">
+	<g transform="matrix(0.53 0 0 0.53 97.39 365.54)">
+		<circle vector-effect="non-scaling-stroke" cx="0" cy="0" r="35" />
+	</g>
+	<g transform="matrix(3.79 0 0 0.2 250 366.1)">
+		<rect vector-effect="non-scaling-stroke" x="-37.165" y="-37.165" rx="0" ry="0" width="74.33" height="74.33" />
+	</g>
+	<g transform="matrix(0.53 0 0 0.53 250 102.94)">
+		<circle vector-effect="non-scaling-stroke" cx="0" cy="0" r="35" />
+	</g>
+	<g transform="matrix(1.91 -3.28 0.17 0.1 174.19 231.64)">
+		<rect vector-effect="non-scaling-stroke" x="-37.165" y="-37.165" rx="0" ry="0" width="74.33" height="74.33" />
+	</g>
+	<g transform="matrix(1.94 3.25 -0.17 0.1 325.26 229.47)">
+		<rect vector-effect="non-scaling-stroke" x="-37.165" y="-37.165" rx="0" ry="0" width="74.33" height="74.33" />
+	</g>
+	<g transform="matrix(0.53 0 0 0.53 403.72 364.69)">
+		<circle vector-effect="non-scaling-stroke" cx="0" cy="0" r="35" />
+	</g>
+	<g transform="matrix(0.89 0 0 0.89 146.46 202.15)">
+		<text xml:space="preserve" font-size="40" font-style="normal" font-weight="400" style="fill: rgb(0,0,0)">
+			<tspan x="-10.14" y="12.57">a</tspan>
+		</text>
+	</g>
+	<g transform="matrix(0.89 0 0 0.89 357.44 206.27)">
+		<text xml:space="preserve" font-size="40" font-style="normal" font-weight="400" style="fill: rgb(0,0,0)">
+			<tspan x="-11.18" y="12.57">b</tspan>
+		</text>
+	</g>
+	<g transform="matrix(0.89 0 0 0.89 250 396.57)">
+		<text xml:space="preserve" font-size="40" font-style="normal" font-weight="400" style="fill: rgb(0,0,0)">
+			<tspan x="-9.34" y="12.57">c</tspan>
+		</text>
+	</g>
+	<g transform="matrix(1 0 0 1 338.45 327.29)">
+		<text xml:space="preserve" font-size="40" font-style="normal" font-weight="400" style="fill: rgb(0,0,0)">
+			<tspan x="-13.6" y="12.57">A</tspan>
+		</text>
+	</g>
+	<g transform="matrix(1 0 0 1 250 162)">
+		<text xml:space="preserve" font-size="40" font-style="normal" font-weight="400" style="fill: rgb(0,0,0)">
+			<tspan x="-13.7" y="12.57">C</tspan>
+		</text>
+	</g>
+	<g transform="matrix(1 0 0 1 159.83 330.6)">
+		<text xml:space="preserve" font-size="40" font-style="normal" font-weight="400" style="fill: rgb(0,0,0)">
+			<tspan x="-12.94" y="12.57">B</tspan>
+		</text>
+	</g>
+</svg>

@@ -1,5 +1,7 @@
 import React from 'react';
-import {FlatList, Linking, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, Linking, StyleSheet, Text, TouchableOpacity} from 'react-native';
+
+import Layout from 'components/Layout';
 
 import {colors} from 'BaseTheme';
 import {displayName, version} from 'app.json';
@@ -17,7 +19,7 @@ export default function Settings({navigation}) {
   ];
 
   return (
-    <View>
+    <Layout>
       <FlatList
         data={menuItems}
         renderItem={({item}) => {
@@ -37,7 +39,7 @@ export default function Settings({navigation}) {
           </>
         }
       />
-    </View>
+    </Layout>
   );
 }
 

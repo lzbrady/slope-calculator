@@ -3,16 +3,7 @@ import {StyleSheet, Text, TextInput as RNTextInput, View} from 'react-native';
 
 import {colors, labelStyle} from 'BaseTheme';
 
-export default function TextInput({
-  inputContainerStyle,
-  inputStyle,
-  keyboardType,
-  left,
-  right,
-  label,
-  ref,
-  ...props
-}) {
+export default function TextInput({inputContainerStyle, inputStyle, keyboardType, left, right, label, ref, ...props}) {
   return (
     <>
       {label && <Text style={labelStyle}>{label}</Text>}
