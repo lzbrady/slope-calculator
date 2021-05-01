@@ -217,19 +217,19 @@ export default function Triangle({navigation}) {
               <View style={styles.infoBlock}>
                 <Text style={styles.infoLabel}>Angle A: </Text>
                 <Text numberOfLines={1} style={styles.infoValue}>
-                  {angleARad ?? '-'} rad
+                  {(isNaN(angleARad) ? '-' : angleARad) ?? '-'} rad
                 </Text>
               </View>
               <View style={styles.infoBlock}>
                 <Text style={styles.infoLabel}>Angle B: </Text>
                 <Text numberOfLines={1} style={styles.infoValue}>
-                  {angleBRad ?? '-'} rad
+                  {(isNaN(angleBRad) ? '-' : angleBRad) ?? '-'} rad
                 </Text>
               </View>
               <View style={styles.infoBlock}>
                 <Text style={styles.infoLabel}>Angle C: </Text>
                 <Text numberOfLines={1} style={styles.infoValue}>
-                  {angleCRad ?? '-'} rad
+                  {(isNaN(angleCRad) ? '-' : angleCRad) ?? '-'} rad
                 </Text>
               </View>
             </View>
