@@ -90,7 +90,7 @@ export default function SlopeLineGraph({x1, y1, x2, y2}) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.chartTitle}>{`Graph of (${x1}, ${y1}) and (${x2}, ${y2})`}</Text>
+      {data?.length > 0 && <Text style={styles.chartTitle}>{`Graph of (${x1}, ${y1}) and (${x2}, ${y2})`}</Text>}
 
       <View style={styles.chartContainer}>
         <YAxis

@@ -19,11 +19,7 @@ export default function CalcStack() {
           fontWeight: 'bold',
         },
       }}>
-      <StackNavigator.Screen
-        name="SlopeCalc"
-        component={SlopeCalc}
-        options={{title: 'Slope Calculator'}}
-      />
+      <StackNavigator.Screen name="SlopeCalc" component={SlopeCalc} options={{title: 'Slope Calculator'}} />
     </StackNavigator.Navigator>
   );
 }

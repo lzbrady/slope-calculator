@@ -6,8 +6,8 @@ import CalcStack from 'navigation/CalcStack';
 import SettingsStack from 'navigation/SettingsStack';
 
 import {colors} from 'BaseTheme';
-import CalcIcon from 'icons/close.svg';
-import SettingsIcon from 'icons/close.svg';
+import Slope from 'icons/slope.svg';
+import SettingsIcon from 'icons/settings.svg';
 
 const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
@@ -18,18 +18,10 @@ export default function TabNavigator() {
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
           switch (route.name) {
-            case 'Calc':
-              return (
-                <CalcIcon width={size * 1.7} height={size * 1.7} fill={color} />
-              );
+            case 'Slope':
+              return <Slope width={size * 1.4} height={size * 1.4} fill={color} />;
             case 'Settings':
-              return (
-                <SettingsIcon
-                  width={size * 1.45}
-                  height={size * 1.45}
-                  fill={color}
-                />
-              );
+              return <SettingsIcon width={size * 1.1} height={size * 1.1} fill={color} />;
           }
         },
       })}
@@ -47,7 +39,7 @@ export default function TabNavigator() {
           paddingBottom: Math.max(insets.bottom - 20, 0),
         },
       }}>
-      <Tab.Screen name="Calc" component={CalcStack} />
+      <Tab.Screen name="Slope" component={CalcStack} />
       <Tab.Screen name="Settings" component={SettingsStack} />
     </Tab.Navigator>
   );
