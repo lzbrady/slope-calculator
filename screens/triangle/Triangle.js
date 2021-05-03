@@ -209,6 +209,8 @@ export default function Triangle({navigation}) {
           )}
 
           <View style={styles.infoContainer}>
+            <Text style={styles.disclaimer}>Triangles with 2 possible solutions will only show one.</Text>
+
             {/* Sides */}
             <View style={[styles.infoChunk, styles.borderBottom]}>
               <Text style={styles.infoChunkLabel}>Sides</Text>
@@ -274,6 +276,13 @@ const styles = StyleSheet.create({
   },
   container: {
     marginBottom: 20,
+  },
+  disclaimer: {
+    marginBottom: 10,
+    color: colors.gray,
+    fontSize: 10,
+    fontStyle: 'italic',
+    textAlign: 'center',
   },
   formulaDropdownContainer: {
     flexDirection: 'row',
