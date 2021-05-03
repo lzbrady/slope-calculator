@@ -6,7 +6,7 @@ import TextInput from 'components/controls/TextInput';
 import Dropdown from 'components/controls/Dropdown';
 import SlopeLineGraph from 'components/charts/SlopeLineGraph';
 
-import {colors} from 'BaseTheme';
+import {card, colors} from 'BaseTheme';
 
 const NO_SLOPE = '-';
 const round = 1000000;
@@ -114,12 +114,24 @@ export default function SlopeCalc({navigation}) {
           <View style={styles.pointContainer}>
             <Text style={styles.pointText}>Point 1</Text>
             <View style={styles.inputContainer}>
-              <View style={styles.pointInputContainer}>
-                <TextInput value={x1} onChangeText={setX1} label="X" keyboardType="decimal-pad" />
+              <View style={styles.pointInputWrapper}>
+                <TextInput
+                  inputContainerStyle={styles.pointInputContainer}
+                  value={x1}
+                  onChangeText={setX1}
+                  label="X"
+                  keyboardType="decimal-pad"
+                />
               </View>
 
-              <View style={styles.pointInputContainer}>
-                <TextInput value={y1} onChangeText={setY1} label="Y" keyboardType="decimal-pad" />
+              <View style={styles.pointInputWrapper}>
+                <TextInput
+                  inputContainerStyle={styles.pointInputContainer}
+                  value={y1}
+                  onChangeText={setY1}
+                  label="Y"
+                  keyboardType="decimal-pad"
+                />
               </View>
             </View>
           </View>
@@ -127,57 +139,71 @@ export default function SlopeCalc({navigation}) {
             <Text style={styles.pointText}>{useYIntercept ? 'Y Intercept' : 'Point 2'}</Text>
             <View style={styles.inputContainer}>
               {!useYIntercept && (
-                <View style={styles.pointInputContainer}>
-                  <TextInput value={x2} onChangeText={setX2} label="X" keyboardType="decimal-pad" />
+                <View style={styles.pointInputWrapper}>
+                  <TextInput
+                    inputContainerStyle={styles.pointInputContainer}
+                    value={x2}
+                    onChangeText={setX2}
+                    label="X"
+                    keyboardType="decimal-pad"
+                  />
                 </View>
               )}
 
-              <View style={styles.pointInputContainer}>
-                <TextInput value={y2} onChangeText={setY2} label="Y" keyboardType="decimal-pad" />
+              <View style={styles.pointInputWrapper}>
+                <TextInput
+                  inputContainerStyle={styles.pointInputContainer}
+                  value={y2}
+                  onChangeText={setY2}
+                  label="Y"
+                  keyboardType="decimal-pad"
+                />
               </View>
             </View>
           </View>
 
           <Text style={styles.disclaimer}>Answers may be rounded within 6 decimals</Text>
 
-          <View style={styles.slopeContainer}>
-            <Text style={styles.slopeLabel}>Slope</Text>
-            <Text style={styles.slopeValue}>{slope}</Text>
-          </View>
-          <View style={styles.slopeInfoContainer}>
-            <View style={styles.slopeInfoColumn}>
-              <View style={styles.slopeInfo}>
-                <Text style={styles.slopeInfoLabel}>Fraction</Text>
-                <Text style={styles.slopeInfoValue}>
-                  {slopeFraction
-                    ? slopeFraction[1] === 1
-                      ? slopeFraction[0]
-                      : `${slopeFraction[0]} / ${slopeFraction[1]}`
-                    : '-'}
-                </Text>
-              </View>
-              <View style={styles.slopeInfo}>
-                <Text style={styles.slopeInfoLabel}>Angle</Text>
-                <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? angle : '-'}</Text>
-              </View>
-              <View style={styles.slopeInfo}>
-                <Text style={styles.slopeInfoLabel}>Delta X</Text>
-                <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? deltaX : '-'}</Text>
-              </View>
+          <View style={styles.answerContainer}>
+            <View style={styles.slopeContainer}>
+              <Text style={styles.slopeLabel}>Slope</Text>
+              <Text style={styles.slopeValue}>{slope}</Text>
             </View>
+            <View style={styles.slopeInfoContainer}>
+              <View style={styles.slopeInfoColumn}>
+                <View style={styles.slopeInfo}>
+                  <Text style={styles.slopeInfoLabel}>Fraction</Text>
+                  <Text style={styles.slopeInfoValue}>
+                    {slopeFraction
+                      ? slopeFraction[1] === 1
+                        ? slopeFraction[0]
+                        : `${slopeFraction[0]} / ${slopeFraction[1]}`
+                      : '-'}
+                  </Text>
+                </View>
+                <View style={styles.slopeInfo}>
+                  <Text style={styles.slopeInfoLabel}>Angle</Text>
+                  <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? angle : '-'}</Text>
+                </View>
+                <View style={styles.slopeInfo}>
+                  <Text style={styles.slopeInfoLabel}>Delta X</Text>
+                  <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? deltaX : '-'}</Text>
+                </View>
+              </View>
 
-            <View style={styles.slopeInfoColumn}>
-              <View style={styles.slopeInfo}>
-                <Text style={styles.slopeInfoLabel}>Equation</Text>
-                <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? equation : '-'}</Text>
-              </View>
-              <View style={styles.slopeInfo}>
-                <Text style={styles.slopeInfoLabel}>Distance</Text>
-                <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? distance : '-'}</Text>
-              </View>
-              <View style={styles.slopeInfo}>
-                <Text style={styles.slopeInfoLabel}>Delta Y</Text>
-                <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? deltaY : '-'}</Text>
+              <View style={styles.slopeInfoColumn}>
+                <View style={styles.slopeInfo}>
+                  <Text style={styles.slopeInfoLabel}>Equation</Text>
+                  <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? equation : '-'}</Text>
+                </View>
+                <View style={styles.slopeInfo}>
+                  <Text style={styles.slopeInfoLabel}>Distance</Text>
+                  <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? distance : '-'}</Text>
+                </View>
+                <View style={styles.slopeInfo}>
+                  <Text style={styles.slopeInfoLabel}>Delta Y</Text>
+                  <Text style={styles.slopeInfoValue}>{slope !== NO_SLOPE ? deltaY : '-'}</Text>
+                </View>
               </View>
             </View>
           </View>
@@ -190,6 +216,10 @@ export default function SlopeCalc({navigation}) {
 }
 
 const styles = StyleSheet.create({
+  answerContainer: {
+    ...card,
+    marginVertical: 30,
+  },
   container: {
     marginBottom: 20,
   },
@@ -219,7 +249,13 @@ const styles = StyleSheet.create({
   },
   pointInputContainer: {
     flex: 1,
+    marginLeft: 5,
+  },
+  pointInputWrapper: {
+    flex: 1,
     marginHorizontal: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   pointText: {
     fontSize: 18,
@@ -232,12 +268,9 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   slopeContainer: {
-    borderWidth: 2,
-    borderColor: colors.black,
-    width: '40%',
-    maxWidth: 150,
-    alignSelf: 'center',
-    marginVertical: 20,
+    borderBottomWidth: 2,
+    borderBottomColor: colors.black,
+    marginBottom: 10,
     alignItems: 'center',
     paddingVertical: 5,
     borderRadius: 4,
@@ -265,6 +298,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     marginBottom: 5,
+    color: colors.darkGray,
   },
   slopeValue: {
     fontSize: 20,

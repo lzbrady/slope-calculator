@@ -1,12 +1,15 @@
 import React from 'react';
 import {Svg, Polygon} from 'react-native-svg';
 
+import {useSettingsContext} from 'context/SettingsContext';
+
 import {colors} from 'BaseTheme';
 
 // const bounds = 100;
 const rightAngleRad = 90 * (Math.PI / 180);
 export default function TriangleShape({a, b, c, A, B, C}) {
-  console.log('Params', {a, b, c, A, B, C});
+  const {dataColor} = useSettingsContext();
+
   if (!a || !b || !c || !A || !B || !C) {
     return null;
   }
@@ -23,7 +26,7 @@ export default function TriangleShape({a, b, c, A, B, C}) {
 
   return (
     <Svg viewBox={`0 0 ${bounds} ${bounds}`}>
-      <Polygon points={`${pointA} ${pointB} ${pointC} ${pointA}`} fill={colors.primary} stroke="none" />
+      <Polygon points={`${pointA} ${pointB} ${pointC} ${pointA}`} fill={dataColor} stroke="none" />
     </Svg>
   );
 }

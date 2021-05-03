@@ -6,6 +6,8 @@ import * as scale from 'd3-scale';
 
 import {useSettingsContext} from 'context/SettingsContext';
 
+import {colors} from 'BaseTheme';
+
 export default function SlopeLineGraph({x1, y1, x2, y2}) {
   const {dataColor} = useSettingsContext();
 
@@ -143,9 +145,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   chartTitle: {
-    fontSize: 16,
-    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: '600',
     marginBottom: 5,
+    color: colors.darkGray,
   },
   container: {},
 });

@@ -8,7 +8,7 @@ import TriangleShape from 'components/charts/TriangleShape';
 
 import TriangleLabelsIcon from 'icons/triangle-labels.svg';
 
-import {colors} from 'BaseTheme';
+import {card, colors} from 'BaseTheme';
 
 const SSS = 0;
 const ASS = 1;
@@ -210,7 +210,7 @@ export default function Triangle({navigation}) {
 
           <View style={styles.infoContainer}>
             {/* Sides */}
-            <View style={styles.infoChunk}>
+            <View style={[styles.infoChunk, styles.borderBottom]}>
               <Text style={styles.infoChunkLabel}>Sides</Text>
               <View style={styles.infoBlock}>
                 <Text style={styles.infoLabel}>Side A: </Text>
@@ -267,6 +267,11 @@ export default function Triangle({navigation}) {
 }
 
 const styles = StyleSheet.create({
+  borderBottom: {
+    borderBottomWidth: 1,
+    borderBottomColor: colors.lightGray,
+    paddingBottom: 10,
+  },
   container: {
     marginBottom: 20,
   },
@@ -287,11 +292,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   infoChunkLabel: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '600',
-    marginBottom: 3,
+    marginBottom: 5,
+    color: colors.darkGray,
   },
   infoContainer: {
+    ...card,
     marginVertical: 20,
   },
   infoLabel: {
