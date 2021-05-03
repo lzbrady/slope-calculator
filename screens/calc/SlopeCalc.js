@@ -162,13 +162,13 @@ export default function SlopeCalc({navigation}) {
             </View>
           </View>
 
-          <Text style={styles.disclaimer}>Answers may be rounded within 6 decimals</Text>
-
           <View style={styles.answerContainer}>
             <View style={styles.slopeContainer}>
               <Text style={styles.slopeLabel}>Slope</Text>
               <Text style={styles.slopeValue}>{slope}</Text>
             </View>
+            <Text style={styles.disclaimer}>Answers may be rounded within 6 decimals</Text>
+
             <View style={styles.slopeInfoContainer}>
               <View style={styles.slopeInfoColumn}>
                 <View style={styles.slopeInfo}>
@@ -218,15 +218,16 @@ export default function SlopeCalc({navigation}) {
 const styles = StyleSheet.create({
   answerContainer: {
     ...card,
-    marginVertical: 30,
+    marginTop: 40,
+    marginBottom: 30,
   },
   container: {
     marginBottom: 20,
   },
   disclaimer: {
-    marginTop: 10,
+    marginBottom: 10,
     color: colors.gray,
-    fontSize: 11,
+    fontSize: 10,
     fontStyle: 'italic',
     textAlign: 'center',
   },
@@ -270,7 +271,6 @@ const styles = StyleSheet.create({
   slopeContainer: {
     borderBottomWidth: 2,
     borderBottomColor: colors.black,
-    marginBottom: 10,
     alignItems: 'center',
     paddingVertical: 5,
     borderRadius: 4,
