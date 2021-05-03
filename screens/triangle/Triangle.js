@@ -14,6 +14,7 @@ const SSS = 0;
 const ASS = 1;
 const SAA = 2;
 const SAS = 3;
+const ASA = 4;
 
 export default function Triangle({navigation}) {
   const [method, setMethod] = useState(SSS);
@@ -93,6 +94,22 @@ export default function Triangle({navigation}) {
         setAngleCRad(!useSideB ? ___angle : ___lastAngle);
         setSideA(___sideA);
         break;
+      case ASA:
+        if (!sideC || !angleA || !angleB) {
+          return;
+        }
+
+        const ____angleC = degToRad(180 - angleA - angleB);
+        const ____sideA = (sideC / Math.sin(____angleC)) * Math.sin(degToRad(angleA));
+        const ____sideB = (sideC / Math.sin(____angleC)) * Math.sin(degToRad(angleB));
+
+        setAngleARad(degToRad(angleA));
+        setAngleBRad(degToRad(angleB));
+        setAngleCRad(____angleC);
+        setSideA(____sideA);
+        setSideB(____sideB);
+
+        break;
     }
   }, [method, sideA, sideB, sideC, angleA, angleB, angleC]);
 
@@ -127,6 +144,10 @@ export default function Triangle({navigation}) {
               label: 'SAS',
               value: SAS,
             },
+            {
+              label: 'ASA',
+              value: ASA,
+            },
           ]}
           placeholder={{}}
         />
@@ -150,7 +171,7 @@ export default function Triangle({navigation}) {
               keyboardType="decimal-pad"
             />
           )}
-          {(method === SAA || method === ASS || method === SSS || method === SAS) && (
+          {(method === SAA || method === ASS || method === SSS || method === SAS || method === ASA) && (
             <TextInput
               inputContainerStyle={styles.inputContainer}
               value={sideC}
@@ -159,7 +180,7 @@ export default function Triangle({navigation}) {
               keyboardType="decimal-pad"
             />
           )}
-          {(method === SAA || method === SAS) && (
+          {(method === SAA || method === SAS || method === ASA) && (
             <TextInput
               inputContainerStyle={styles.inputContainer}
               value={angleA}
@@ -168,7 +189,7 @@ export default function Triangle({navigation}) {
               keyboardType="decimal-pad"
             />
           )}
-          {method === ASS && (
+          {(method === ASS || method === ASA) && (
             <TextInput
               inputContainerStyle={styles.inputContainer}
               value={angleB}
@@ -194,19 +215,19 @@ export default function Triangle({navigation}) {
               <View style={styles.infoBlock}>
                 <Text style={styles.infoLabel}>Side A: </Text>
                 <Text numberOfLines={1} style={styles.infoValue}>
-                  {sideA ?? '-'}
+                  {(isNaN(sideA) ? '-' : sideA) ?? '-'}
                 </Text>
               </View>
               <View style={styles.infoBlock}>
                 <Text style={styles.infoLabel}>Side B: </Text>
                 <Text numberOfLines={1} style={styles.infoValue}>
-                  {sideB ?? '-'}
+                  {(isNaN(sideB) ? '-' : sideB) ?? '-'}
                 </Text>
               </View>
               <View style={styles.infoBlock}>
                 <Text style={styles.infoLabel}>Side C: </Text>
                 <Text numberOfLines={1} style={styles.infoValue}>
-                  {sideC ?? '-'}
+                  {(isNaN(sideC) ? '-' : sideC) ?? '-'}
                 </Text>
               </View>
             </View>
@@ -237,6 +258,7 @@ export default function Triangle({navigation}) {
         </View>
 
         <View style={styles.triangleContainer}>
+          <Text style={styles.infoChunkLabel}>Shape</Text>
           <TriangleShape a={sideA} b={sideB} c={sideC} A={angleARad} B={angleBRad} C={angleCRad} />
         </View>
       </ScrollView>

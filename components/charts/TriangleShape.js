@@ -21,11 +21,6 @@ export default function TriangleShape({a, b, c, A, B, C}) {
     bounds - Number(b) * Math.sin(Number(A)) - originY
   }`;
 
-  console.log('Bounds', bounds);
-  console.log('Point A', pointA);
-  console.log('Point B', pointB);
-  console.log('Point C', pointC);
-
   return (
     <Svg viewBox={`0 0 ${bounds} ${bounds}`}>
       <Polygon points={`${pointA} ${pointB} ${pointC} ${pointA}`} fill={colors.primary} stroke="none" />
