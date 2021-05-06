@@ -14,7 +14,9 @@ export default function Settings({navigation}) {
     },
     {
       name: 'Contact Support',
-      onPress: () => Linking.openURL('mailto:luke@pgmediasolutions.com?subject=Slope Calculator Support'),
+      onPress: () => {
+        Linking.openURL('mailto:luke@pgmediasolutions.com?subject=Slope and Triangle Calculator Support');
+      },
     },
   ];
 

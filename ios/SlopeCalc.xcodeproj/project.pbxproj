@@ -12,6 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A35A821A2644425100BE39AA /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A35A82192644425000BE39AA /* BootSplash.storyboard */; };
 		D2CAACC9EB97959AAA2E81F0 /* libPods-SlopeCalc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAB466DC81A6097AE82E285 /* libPods-SlopeCalc.a */; };
 		E088E1AED0612F9B9AB11E04 /* libPods-SlopeCalc-SlopeCalcTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA1ADA3D8F7C3BE72B153D5 /* libPods-SlopeCalc-SlopeCalcTests.a */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SlopeCalc/main.m; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SlopeCalc/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89FF7A8B35F225546DD6B7A6 /* Pods-SlopeCalc-SlopeCalcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlopeCalc-SlopeCalcTests.release.xcconfig"; path = "Target Support Files/Pods-SlopeCalc-SlopeCalcTests/Pods-SlopeCalc-SlopeCalcTests.release.xcconfig"; sourceTree = "<group>"; };
+		A35A82192644425000BE39AA /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = SlopeCalc/BootSplash.storyboard; sourceTree = "<group>"; };
 		E9542BC7010833B461BEA26D /* Pods-SlopeCalc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlopeCalc.release.xcconfig"; path = "Target Support Files/Pods-SlopeCalc/Pods-SlopeCalc.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F0ED02C916358A4E9F0CE6FD /* Pods-SlopeCalc-SlopeCalcTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlopeCalc-SlopeCalcTests.debug.xcconfig"; path = "Target Support Files/Pods-SlopeCalc-SlopeCalcTests/Pods-SlopeCalc-SlopeCalcTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		13B07FAE1A68108700A75B9A /* SlopeCalc */ = {
 			isa = PBXGroup;
 			children = (
+				A35A82192644425000BE39AA /* BootSplash.storyboard */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -145,7 +148,6 @@
 				F0ED02C916358A4E9F0CE6FD /* Pods-SlopeCalc-SlopeCalcTests.debug.xcconfig */,
 				89FF7A8B35F225546DD6B7A6 /* Pods-SlopeCalc-SlopeCalcTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -241,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35A821A2644425100BE39AA /* BootSplash.storyboard in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
@@ -396,6 +399,7 @@
 			baseConfigurationReference = F0ED02C916358A4E9F0CE6FD /* Pods-SlopeCalc-SlopeCalcTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = W9D3L4LM3L;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -424,6 +428,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = W9D3L4LM3L;
 				INFOPLIST_FILE = SlopeCalcTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -449,6 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W9D3L4LM3L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SlopeCalc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -460,7 +466,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pgmediasolutions.slopecalc;
 				PRODUCT_NAME = SlopeCalc;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -475,6 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W9D3L4LM3L;
 				INFOPLIST_FILE = SlopeCalc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -485,7 +492,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pgmediasolutions.slopecalc;
 				PRODUCT_NAME = SlopeCalc;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
