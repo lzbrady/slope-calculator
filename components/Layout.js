@@ -1,5 +1,7 @@
 import React, {useCallback} from 'react';
 import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+
 import {colors} from 'BaseTheme';
 
 export default function Layout({children, fullWidth = false, isLoading, loadingText}) {
@@ -10,7 +12,7 @@ export default function Layout({children, fullWidth = false, isLoading, loadingT
   }, [fullWidth]);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['right', 'left']}>
       <View style={{...styles.contentContainer, ...getContentStyle()}}>
         {isLoading ? (
           <View style={styles.loadingContainer}>
@@ -21,7 +23,7 @@ export default function Layout({children, fullWidth = false, isLoading, loadingT
           children
         )}
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

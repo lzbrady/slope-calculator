@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     flex: 1,
     fontSize: 18,
+    color: colors.black,
   },
   inputContainer: {
     flexDirection: 'row',
