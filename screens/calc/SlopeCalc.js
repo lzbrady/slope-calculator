@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 
 import Layout from 'components/Layout';
 import TextInput from 'components/controls/TextInput';
@@ -120,7 +120,7 @@ export default function SlopeCalc({navigation}) {
                   value={x1}
                   onChangeText={setX1}
                   label="X"
-                  keyboardType="decimal-pad"
+                  keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'}
                 />
               </View>
 
@@ -130,7 +130,7 @@ export default function SlopeCalc({navigation}) {
                   value={y1}
                   onChangeText={setY1}
                   label="Y"
-                  keyboardType="decimal-pad"
+                  keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'}
                 />
               </View>
             </View>
@@ -145,7 +145,7 @@ export default function SlopeCalc({navigation}) {
                     value={x2}
                     onChangeText={setX2}
                     label="X"
-                    keyboardType="decimal-pad"
+                    keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'}
                   />
                 </View>
               )}
@@ -156,7 +156,7 @@ export default function SlopeCalc({navigation}) {
                   value={y2}
                   onChangeText={setY2}
                   label="Y"
-                  keyboardType="decimal-pad"
+                  keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'}
                 />
               </View>
             </View>

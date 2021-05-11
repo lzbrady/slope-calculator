@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 
 import Layout from 'components/Layout';
 import TextInput from 'components/controls/TextInput';
@@ -159,7 +159,7 @@ export default function Triangle({navigation}) {
               value={sideA}
               onChangeText={setSideA}
               label="Side a"
-              keyboardType="decimal-pad"
+              keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'}
             />
           )}
           {(method === ASS || method === SSS || method === SAS) && (
@@ -168,7 +168,7 @@ export default function Triangle({navigation}) {
               value={sideB}
               onChangeText={setSideB}
               label="Side b"
-              keyboardType="decimal-pad"
+              keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'}
             />
           )}
           {(method === SAA || method === ASS || method === SSS || method === SAS || method === ASA) && (
@@ -177,7 +177,7 @@ export default function Triangle({navigation}) {
               value={sideC}
               onChangeText={setSideC}
               label="Side c"
-              keyboardType="decimal-pad"
+              keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'}
             />
           )}
           {(method === SAA || method === SAS || method === ASA) && (
@@ -186,7 +186,7 @@ export default function Triangle({navigation}) {
               value={angleA}
               onChangeText={setAngleA}
               label="Angle A (degrees)"
-              keyboardType="decimal-pad"
+              keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'}
             />
           )}
           {(method === ASS || method === ASA) && (
@@ -195,7 +195,7 @@ export default function Triangle({navigation}) {
               value={angleB}
               onChangeText={setAngleB}
               label="Angle B (degrees)"
-              keyboardType="decimal-pad"
+              keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'}
             />
           )}
           {method === SAA && (
@@ -204,7 +204,7 @@ export default function Triangle({navigation}) {
               value={angleC}
               onChangeText={setAngleC}
               label="Angle C (degrees)"
-              keyboardType="decimal-pad"
+              keyboardType={Platform.OS === 'ios' ? 'numbers-and-punctuation' : 'decimal-pad'}
             />
           )}
 

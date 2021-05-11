@@ -127,7 +127,6 @@ export default function SlopeLineGraph({x1, y1, x2, y2}) {
             data={data}
             min={minX}
             max={maxX}
-            xAccessor={({item}) => item.x}
             contentInset={{left: 15, right: 15}}
             svg={axesSvg}
             numberOfTicks={10}
